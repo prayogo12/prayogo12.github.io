@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Login | PT. Adika Catur Karya </title>
+  <!-- App favicon -->
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="assets/css/bootstrap-login-form.min.css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <!-- Start your project here-->
+  <div id="preloader">
+
+  </div>
+  <style>
+    .divider:after,
+    .divider:before {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #eee;
+    }
+
+    .h-custom {
+      height: calc(100% - 73px);
+    }
+
+    @media (max-width: 450px) {
+      .h-custom {
+        height: 100%;
+      }
+    }
+  </style>
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+          <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_7m9xgwhi.json" mode="bounce"
+            background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+          <h2 class="text-body" style="text-align: center;">Selamat Datang</h2>
+          <p class="lead fw-normal mb-0 me-3" style="text-align: center;">PT. ADIKA CATUR KARYA </p>
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form>
+            <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-center">
+
+              <span class="text-sm-center text-body" style="font-size: xx-large;">Sign in</span>
+
+            </div>
+            <p class="text-sm-center"> Enter your username and password to access account.</p>
+            <div class="divider d-flex align-items-center my-4">
+
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="email" id="username" class="form-control form-control-lg"
+                placeholder="Enter a valid email address" required>
+              <label class="form-label" for="form3Example3">Username</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter password"
+                required>
+              <label class="form-label" for="form3Example4">Password</label>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- Checkbox -->
+              <!-- <div class="form-check mb-0">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                <label class="form-check-label" for="form2Example3">
+                  Remember me
+                </label>
+              </div>
+              <a href="#!" class="text-body">Forgot password?</a> -->
+              <div class="g-recaptcha" data-sitekey="6LcetVsiAAAAAPALaTj1bH6ZrIZ6QfoMAT7d1gFo" id="login_capthca"></div>
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <a href="dashboard-crm.html">
+                <button type="button" class="btn btn-primary btn-lg" id="btn_login"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem; width: 100%; border-radius: 20px;">Login</button>
+              </a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End your project here-->
+
+  <script type="text/javascript" src="assets/js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript">
+    $("#btn_login").click(function (e) {
+      e.preventDefault();
+
+      var username = $("#username").val();
+      var password = $("#password").val();
+      var loader = $("#preloader").val();
+      var login_capthca = $(".g-recaptcha").val();
+      if (username == '' || username == null) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login gagal',
+          text: 'Form Username wajib diisi',
+        });
+      }
+      if (password == '' || password == null) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login gagal',
+          text: 'Form Password wajib diisi',
+        });
+
+      }
+      // if ((login_capthca).attr('checked') == false) {
+      //   Swal.fire({
+      //     icon: 'error',
+      //     title: 'Login gagal',
+      //     text: 'Form Captcha wajib dichecklist',
+      //   });
+      // }
+      if (username == '' || password == '' || login_capthca == null) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login gagal',
+          text: 'Form Username,Password, Captcha wajib diisi',
+        });
+      } else {
+        window.location.href = "marketing_home.html";
+      }
+    });
+  </script>
+  <script>
+    setTimeout(function () {
+      $('#preloader').fadeToggle();
+    }, 1000);
+  </script>
+</body>
+
+</html>
